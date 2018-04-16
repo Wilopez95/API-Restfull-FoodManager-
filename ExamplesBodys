@@ -1,0 +1,48 @@
+-------------------------------------------
+
+POST -> http://localhost:3000/orders
+BODY: 
+{
+	"userId":"5ad3869168f832251077ed34",
+	"marketId":"5ad0ebd0a62bc230e4a87fe1",
+	"products":"[5ace90feddd4d620ccfba194,5aceb396867b2c356c9d4c35]",  //(esto aun no funciona)
+	"price": "1500",
+	"status": "finishet"
+}
+-------------------------------------------
+POST -> http://localhost:3000/users/login
+BODY:
+{
+	"email": "alguien@persona.com",
+	"password": "alguien"
+}
+-------------------------------------------
+POST ->http://localhost:3000/users/signup 
+BODY:
+{
+	"email": "alguienmas@persona.com",
+	"password": "alguienmas",
+	"name": "benitomas",
+	"phone": "12345689",
+	"type": "1"
+}
+-------------------------------------------
+POST ->http://localhost:3000/markets
+BODY:
+{
+	"userId": "5ad41c6ea8b2bd3b88049313",
+	"name": "Donde Paco 3",
+	"location": "Cartago",
+	"phone": "12345689"
+}
+-------------------------------------------
+POST ->http://localhost:3000/products/
+BODY:
+{
+		"name": "Salsa lizano14",
+        "brand": "Lizano",
+        "description": "Deliciosa salsa de verduras",
+        "category": "Aderezos", 
+        "code": "1579536482",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
+}
