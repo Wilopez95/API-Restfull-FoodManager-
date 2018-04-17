@@ -6,6 +6,8 @@ const checkAuth = require('../middleware/check-auth');
 const User = require('../models/user');
 
 const Market = require('../models/market');
+
+
 router.get('/',(req, res, next)=>{
     Market.find()
     .select("_id user name location phone")
@@ -36,6 +38,32 @@ router.get('/',(req, res, next)=>{
         res.status(500).json({
             error : err
         });
+    });
+
+    
+});
+
+router.get('/:UserId',(req, res, next)=>{
+    const id = req.params.UserId;
+    Market.find({user:id})
+    .select("_id name location phone ")
+    .exec()
+    .then(result=>{
+        if(result.length<1){
+            return res.status(401).json({
+            message: 'No hay mercados asociados a este usuario'
+            });
+        }else{
+            console.log(result)
+            return res.status(201).json({
+            message: 'Sucesfull',
+            result
+            });
+        }
+    })
+    .catch(err=> {
+        console.log(err);
+        res.status(500).json({ error: err });
     });
 
     
