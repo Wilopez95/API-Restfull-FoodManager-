@@ -57,12 +57,12 @@ router.post('/',checkAuth,(req, res, next)=> {
             message: 'Sucesfull',
             createdProduct: {
                 _id: result._id,
-                    name: result.name,
-                    brand: result.brand,
-                    description: result.description,
-                    category: result.category,
-                    code: result.code,
-                    request: {
+                name: result.name,
+                brand: result.brand,
+                description: result.description,
+                category: result.category,
+                code: result.code,
+                request: {
                         type: 'POST',
                         url: 'http://localhost:3000/products'+result._id
                     }
