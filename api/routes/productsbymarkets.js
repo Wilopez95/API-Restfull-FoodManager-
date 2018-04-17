@@ -47,7 +47,7 @@ router.post('/',checkAuth,(req, res, next)=>{
                 return res.status(404).json({
                     message: 'Product or market not found'
                 });
-            }
+            } 
             const productbymarket = new Productbymarket({
                 _id: mongoose.Types.ObjectId(),
                 product: req.body.productId,
@@ -84,7 +84,7 @@ router.post('/',checkAuth,(req, res, next)=>{
     });
 });
 
-router.get('/:productbymarketId',(req, res, next)=>{
+router.get('/:productbymarketId',checkAuth,(req, res, next)=>{
     Productbymarket.findById(req.params.productbymarketId)
     .select('product market quantity price')
     .populate('product market', 'name brand description location')

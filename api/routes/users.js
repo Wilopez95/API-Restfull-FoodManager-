@@ -3,8 +3,16 @@ const router =  express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const checkAuth = require('../middleware/check-auth');
 
 const User = require('../models/user');
+
+router.post('/check',checkAuth,(req, res, next)=>{
+    res.status(201).json({
+        message: 'Token valido',
+        token : req.params.token
+    });
+});
 
 router.post('/signup',(req, res, next)=>{
     //Encontrar por parametro
