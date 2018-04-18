@@ -1,0 +1,79 @@
+-------------------------------------------
+Crear una nueva orden
+POST -> https://food-manager.herokuapp.com/orders
+BODY: 
+{
+	"userId":"5ad3869168f832251077ed34",
+	"marketId":"5ad0ebd0a62bc230e4a87fe1",
+	"products":"[5ace90feddd4d620ccfba194,5aceb396867b2c356c9d4c35]",  //(esto aun no funciona)
+	"price": "1500",
+	"status": "finishet"
+}
+-------------------------------------------
+Iniciar session con un usuario
+POST -> https://food-manager.herokuapp.com/users/login
+BODY:
+{
+	"email": "alguien@persona.com",
+	"password": "alguien"
+}
+-------------------------------------------
+Verificar si el token de un usuario es valido o no
+POST -> https://food-manager.herokuapp.com/users/check
+BODY
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyNDAxMzEyMSwiZXhwIjoxNTI0MDE2NzIxfQ.X6OxSCmsJd5YQHnUhe50iVMuFTQ6GUpjge1s6j8IX10"
+}
+-------------------------------------------
+Registar un nuevo usuario (type: 0 cliente , 1 mercado)
+POST -> https://food-manager.herokuapp.com/users/signup 
+BODY:
+{
+	"email": "alguienmas@persona.com",
+	"password": "alguienmas",
+	"name": "benitomas",
+	"phone": "12345689",
+	"type": "1"
+}
+-------------------------------------------
+Agregar un nuevo mercado asociado a un usuario(userId)
+POST ->https://food-manager.herokuapp.com/markets
+BODY:
+{
+	"userId": "5ad41c6ea8b2bd3b88049313",
+	"name": "Donde Paco 3",
+	"location": "Cartago",
+	"phone": "12345689"
+}
+-------------------------------------------
+Agregar un nuevo producto a la base de productos
+POST -> https://food-manager.herokuapp.com/products/
+BODY:
+{
+		"name": "Salsa lizano14",
+        "brand": "Lizano",
+        "description": "Deliciosa salsa de verduras",
+        "category": "Aderezos", 
+        "code": "1579536482",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
+}
+-------------------------------------------
+Agregar un nuevo producto a un mercado
+POST -> https://food-manager.herokuapp.com/productsbymarkets
+BODY:
+{
+	"productId": "5ace90feddd4d620ccfba194",
+	"marketId": "5ad41eba8212a036c044e18b",
+	"quantity":"5",
+	"price": "1800"
+}
+-------------------------------------------
+Obtener los productos de un mercado especifico (markeId) se remplaza por el numero de markeId
+GET-> https://food-manager.herokuapp.com/productsbymarkets/(markeId)
+-------------------------------------------
+Obtener los mercados asociados a un cliente (UserId) se remplaza por el numero de UserID
+GET ->https://food-manager.herokuapp.com/markets/(UserId)
+-------------------------------------------
+Obtener un producto por su codigo unico se sustituye por el codigo de un producto
+GET -> https://food-manager.herokuapp.com//code/(productcode)
+-------------------------------------------

@@ -40,7 +40,7 @@ router.get('/',(req, res, next)=>{
     });
 });
 
-router.post('/',checkAuth,(req, res, next)=>{
+router.post('/',(req, res, next)=>{
     Product.findById(req.body.productId) && Market.findById(req.body.marketId)
         .then(new_product => {
             if(!new_product){
@@ -83,11 +83,11 @@ router.post('/',checkAuth,(req, res, next)=>{
         });
     });
 });
-
-router.get('/:productbymarketId',checkAuth,(req, res, next)=>{
+//productbymarket por ID
+router.get('/:productbymarketId',(req, res, next)=>{
     Productbymarket.findById(req.params.productbymarketId)
     .select('product market quantity price')
-    .populate('product market', 'name brand description location')
+    .populate('product market', 'name brand description location ')
     .exec()
     .then(productbymarket=>{
         if(!productbymarket){
@@ -109,35 +109,31 @@ router.get('/:productbymarketId',checkAuth,(req, res, next)=>{
         });
     });
 });
-/*Sobre escribir una funcion 
-router.get('/:marketId',(req, res, next)=>{
-    Productbymarket.findById({ marketId: req.body.marketId})
+//Producto por marketID 
+router.get('/market/:marketID',(req, res, next)=>{
+    const marketId = req.params.marketID;
+    Productbymarket.find({market:marketId})
+    .select('product market quantity price')
+    .populate('product market', 'name brand description location')
     .exec()
-    .then(product => {
-        if(product.length<1){
-            return res.status(401).json({
-                message: 'The market no have any product'
-            });
-        }else{
-            res.status(201).json({
-                message: 'New product',
-                productcreate:{
-                    _id: result._id,
-                    product: result.product,
-                    market: result.market,
-                    quantity: result.quantity,
-                    price: result.price
-                },
-                request: {
-                    type: 'POST',
-                    url: 'http://localhost:3000/productsbymarkets'+result._id
-    
-                }
-            });
+    .then(productbymarket=>{
+        if(!productbymarket){
+            return res.status(404).json({
+                message: "productbymarket not found"
+            })
         }
+        res.status(200).json({
+            product: productbymarket,
+        });
     })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
 });
-*/
+
+
 router.delete('/:productbymarketId',(req, res, next)=>{
     Productbymarket.remove({_id: req.params.productbymarketId }) 
     .exec()

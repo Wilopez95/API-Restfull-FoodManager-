@@ -77,7 +77,7 @@ router.post('/',checkAuth,(req, res, next)=> {
     });
     
 });
-
+//producto por ID
 router.get('/:productId',(req, res, next)=> {
     const id = req.params.productId;
     Product.findById(id)
@@ -104,6 +104,29 @@ router.get('/:productId',(req, res, next)=> {
             });
         }else{
             res.status(404).json({message: "Data not found"});
+        }
+    })
+    .catch(err=> {
+        console.log(err);
+        res.status(500).json({ error: err });
+    });
+    
+});
+
+//producto por codigo de producto
+router.get('/code/:productcode',(req, res, next)=> {
+    const code = req.params.productcode;
+    Product.find({code:code})
+    .select("_id name brand description category code")
+    .exec()
+    .then(doc => {
+        if(doc){
+            res.status(200).json({
+                message: 'Sucesfull',
+                doc
+            });
+        }else{
+            res.status(404).json({message: "El producto no existe"});
         }
     })
     .catch(err=> {

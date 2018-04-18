@@ -54,7 +54,6 @@ router.get('/:UserId',(req, res, next)=>{
             message: 'No hay mercados asociados a este usuario'
             });
         }else{
-            console.log(result)
             return res.status(201).json({
             message: 'Sucesfull',
             result
