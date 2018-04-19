@@ -111,7 +111,7 @@ router.get('/market/:marketID',(req, res, next)=>{
     const marketId = req.params.marketID;
     Productbymarket.find({market:marketId})
     .select('product market quantity price')
-    .populate('product market', 'name brand description location')
+    .populate('product market', 'name brand description category location')
     .exec()
     .then(productbymarket=>{
         if(!productbymarket){

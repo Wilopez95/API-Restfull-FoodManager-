@@ -68,7 +68,7 @@ BODY:
 }
 -------------------------------------------
 Obtener los productos de un mercado especifico (markeId) se remplaza por el numero de markeId
-GET-> https://food-manager.herokuapp.com/productsbymarkets/(markeId)
+GET-> https://food-manager.herokuapp.com/productsbymarkets/market/(markeId)
 -------------------------------------------
 Obtener los mercados asociados a un cliente (UserId) se remplaza por el numero de UserID
 GET ->https://food-manager.herokuapp.com/markets/(UserId)
