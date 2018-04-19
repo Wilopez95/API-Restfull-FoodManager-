@@ -64,7 +64,6 @@ BODY:
 {
 	"productId": "5ace90feddd4d620ccfba194",
 	"marketId": "5ad41eba8212a036c044e18b",
-	"quantity":"5",
 	"price": "1800"
 }
 -------------------------------------------

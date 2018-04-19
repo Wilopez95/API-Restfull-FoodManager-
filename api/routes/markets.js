@@ -22,12 +22,7 @@ router.get('/',(req, res, next)=>{
                     user: doc.user,
                     name: doc.name,
                     location: doc.location,
-                    phone: doc.phone,                    
-                    request: {
-                        type: 'GET',
-                        url: 'http://localhost:3000/markets'+doc._id
-                    }
-
+                    phone: doc.phone
                 }
            })
         };
