@@ -22,7 +22,6 @@ router.get('/',(req, res, next)=>{
                     _id: doc._id,
                     product: doc.product,
                     market: doc.market,
-                    quantity: doc.quantity,
                     price: doc.price,
                     request: {
                         type: 'GET',
@@ -52,7 +51,6 @@ router.post('/',(req, res, next)=>{
                 _id: mongoose.Types.ObjectId(),
                 product: req.body.productId,
                 market: req.body.marketId,
-                quantity: req.body.quantity,
                 price: req.body.price
             });
             return productbymarket.save();
@@ -65,7 +63,6 @@ router.post('/',(req, res, next)=>{
                 _id: result._id,
                 product: result.product,
                 market: result.market,
-                quantity: result.quantity,
                 price: result.price
             },
             request: {
