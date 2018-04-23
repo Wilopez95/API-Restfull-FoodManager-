@@ -103,6 +103,28 @@ BODY:
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
 }
 -------------------------------------------
+Cambiar el estado de una Orden (PropName es el nombre del parametro que se quiere cambiar , Value es el nuevo valor)
+PATCH-> http://localhost:3000/orders/(OrderID)
+BODY:
+[{
+          
+			"propName": "status",
+            "value": "Completado"
+  
+}]
+-------------------------------------------
+Cambiar la informacion de un usuario (PropName es el nombre del parametro que se quiere cambiar , Value es el nuevo valor)
+"Aplicables a nombre y telefono nada mas"
+PATCH-> http://localhost:3000/users/(OrderID)
+BODY:
+[{
+          
+			"propName": "name",
+            "value": "Armando Lopez"
+  
+}]
+
+-------------------------------------------
 
 *Cambios recientes 
 Optener el productbymarketId con el markeId requeire autentificacion

@@ -142,3 +142,25 @@ router.delete('/:orderId',(req, res, next)=>{
 });
 
 module.exports = router;
+
+router.patch('/:orderId',(req, res, next)=> {
+    const id = req.params.orderId;
+    const updateOps = {};
+    for(const ops of req.body){
+        updateOps[ops.propName]= ops.value;
+    }
+    Order.update({ _id: id },{ $set: updateOps})
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json({
+            message: 'Sucesfull'
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+           error: err 
+        });    
+    }); 
+});

@@ -20,11 +20,7 @@ router.get('/',(req, res, next)=> {
                     brand: doc.brand,
                     description: doc.description,
                     category: doc.category,
-                    code: doc.code,
-                    request: {
-                        type: 'GET',
-                        url: 'http://localhost:3000/products'+doc._id
-                    }
+                    code: doc.code,               
 
                 }
            })
@@ -62,10 +58,6 @@ router.post('/',checkAuth,(req, res, next)=> {
                 description: result.description,
                 category: result.category,
                 code: result.code,
-                request: {
-                        type: 'POST',
-                        url: 'http://localhost:3000/products'+result._id
-                    }
             }
         });
     })
@@ -147,20 +139,7 @@ router.patch('/:productId',(req, res, next)=> {
     .then(result => {
         console.log(result);
         res.status(200).json({
-            message: 'Sucesfull',
-            createdProduct: {
-                _id: result._id,
-                    name: result.name,
-                    brand: result.brand,
-                    description: result.description,
-                    category: result.category,
-                    code: result.code, 
-                    request: {
-                        type: 'PATCH by ID',
-
-                        url: 'http://localhost:3000/products'+result._id
-                    }
-            }
+            message: 'Sucesfull'
         });
     })
     .catch(err => {

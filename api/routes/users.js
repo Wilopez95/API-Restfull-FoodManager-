@@ -82,7 +82,7 @@ router.post('/login',(req, res, next)=> {
                 },
                "secret",
             {
-                expiresIn:"1h"
+                expiresIn:"10h"
             }
         );
                return res.status(200).json({
@@ -104,6 +104,30 @@ router.post('/login',(req, res, next)=> {
            error: err 
         })
     });
+});
+
+
+
+router.patch('/:userId',(req, res, next)=> {
+    const id = req.params.userId;
+    const updateOps = {};
+    for(const ops of req.body){
+        updateOps[ops.propName]= ops.value;
+    }
+    User.update({ _id: id },{ $set: updateOps})
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json({
+            message: 'Sucesfull'
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+           error: err 
+        });    
+    }); 
 });
 
 module.exports = router;
