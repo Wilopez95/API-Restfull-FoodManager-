@@ -1,7 +1,7 @@
 const express = require('express');
 const router =  express.Router();
 const mongoose = require('mongoose');
-
+const checkAuth = require('../middleware/check-auth');
 const Product = require('../models/product');
 const Market = require('../models/market');
 const User = require('../models/user');
@@ -11,8 +11,8 @@ const Order = require('../models/order')
 
 router.get('/',(req, res, next)=>{
     Order.find()
-    .select('user market products price status')
-    .populate('user market products','email name phone name name brand description')
+    .select('user market products address price date remark status')
+    .populate('user','email name phone ')
     .exec()
     .then(docs=>{
         res.status(200).json({
@@ -23,13 +23,11 @@ router.get('/',(req, res, next)=>{
                     user: doc.user,
                     market: doc.market,
                     produts: doc.produts,
+                    address: doc.address,
                     price: doc.price,
                     date: doc.date,
+                    remark: doc.remark,
                     status: doc.status,
-                    request: {
-                        type: 'GET',
-                        url: 'http://localhost:3000/orders/'+doc._id
-                    }
                 }                
             })
 
@@ -42,7 +40,7 @@ router.get('/',(req, res, next)=>{
     });
 });
 
-router.post('/',(req, res, next)=>{
+router.post('/',checkAuth,(req, res, next)=>{
         User.findById(req.body.userId) && Market.findById(req.body.marketId)
         .then(new_order =>{
             if(!new_order){
@@ -54,8 +52,10 @@ router.post('/',(req, res, next)=>{
                 _id: mongoose.Types.ObjectId(),
                 user: req.body.userId,
                 market: req.body.marketId,
-                produts: req.body.produts,
+                products: req.body.products,
+                address: req.body.address,
                 price: req.body.price,
+                remark: req.body.remark,
                 status: req.body.status
             });
             return order.save();
@@ -69,13 +69,11 @@ router.post('/',(req, res, next)=>{
                 user: result.user,
                 market: result.market,
                 produts: result.produts,
+                address: result.address,
                 price: result.price,
+                remark: result.remark,
                 status: result.status
             },
-            request: {
-                type: 'POST',
-                url: 'http://localhost:3000/orders'+result._id
-            }
         });
         })
         .catch(err =>{
@@ -87,10 +85,52 @@ router.post('/',(req, res, next)=>{
         
 });
 
-router.get('/:orderId',(req, res, next)=>{
-    res.status(201).json({
-        message: 'get orden by ID',
-        orderId: req.params.orderId
+//ordenes de un markey
+router.get('/market/:marketId',checkAuth,(req, res, next)=>{
+    const marketId = req.params.marketId;
+    Order.find({market:marketId}).sort({date: "desc"})
+    .select('user market products address price date remark status')
+    .populate('user','email name phone ')
+    .exec()
+    .then(order=>{
+        if(order.length<0){
+            return res.status(404).json({
+                message: "This market has no orders"
+            })
+        }
+        res.status(200).json({
+            orders: order,
+        })
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        });
+    });
+})
+
+
+//ordenes de un user
+router.get('/user/:userId',checkAuth,(req, res, next)=>{
+    const userId = req.params.userId;
+    Order.find({user:userId}).sort({date: "desc"})
+    .select('user market products address price date remark status')
+    .populate('user','email name phone ')
+    .exec()
+    .then(order=>{
+        if(order.length<0){
+            return res.status(404).json({
+                message: "This client has no orders"
+            })
+        }
+        res.status(200).json({
+            orders: order,
+        })
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        });
     });
 });
 

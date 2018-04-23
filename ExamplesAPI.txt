@@ -3,11 +3,14 @@ Crear una nueva orden
 POST -> https://food-manager.herokuapp.com/orders
 BODY: 
 {
-	"userId":"5ad3869168f832251077ed34",
-	"marketId":"5ad0ebd0a62bc230e4a87fe1",
-	"products":"[5ace90feddd4d620ccfba194,5aceb396867b2c356c9d4c35]",  //(esto aun no funciona)
+	"userId":"5ad41c6ea8b2bd3b88049313",
+	"marketId":"5ad670d01e10e9097892c44b",
+	"products":"Esto es una ordeb de prueba carajo",
+	"address": "Ahi por ahi donde vive juan el calvo",
 	"price": "1500",
-	"status": "finishet"
+	"remark":"Mae mandemelo en la noche! ",
+	"status": "finishet",
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyNDAxMzEyMSwiZXhwIjoxNTI0MDE2NzIxfQ.X6OxSCmsJd5YQHnUhe50iVMuFTQ6GUpjge1s6j8IX10"
 }
 -------------------------------------------
 Iniciar session con un usuario
@@ -65,14 +68,42 @@ BODY:
 	"productId": "5ace90feddd4d620ccfba194",
 	"marketId": "5ad41eba8212a036c044e18b",
 	"price": "1800"
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
 }
 -------------------------------------------
 Obtener los productos de un mercado especifico (markeId) se remplaza por el numero de markeId
 GET-> https://food-manager.herokuapp.com/productsbymarkets/market/(markeId)
+{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
+}
 -------------------------------------------
 Obtener los mercados asociados a un cliente (UserId) se remplaza por el numero de UserID
 GET ->https://food-manager.herokuapp.com/markets/(UserId)
 -------------------------------------------
 Obtener un producto por su codigo unico se sustituye por el codigo de un producto
-GET -> https://food-manager.herokuapp.com//code/(productcode)
+GET -> https://food-manager.herokuapp.com/produts/code/(productcode)
 -------------------------------------------
+Eliminar los productos asociado a un mercado 
+DELETE ->  http://localhost:3000/productsbymarkets/(productbymarketId)
+{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
+}
+-------------------------------------------
+Obtener las ordenes de cada mercado 
+GET-> http://localhost:3000/orders/market/5ad670d01e10e9097892c44b
+BODY:
+{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
+}
+-------------------------------------------
+Obtener las ordenes de cada usuario 
+GET-> http://localhost:3000/orders/user/5ad41c6ea8b2bd3b88049313
+BODY:
+{
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
+}
+-------------------------------------------
+
+*Cambios recientes 
+Optener el productbymarketId con el markeId requeire autentificacion
+Agregar productbymarketId ahora require autentificacion(pasar token como parametro)

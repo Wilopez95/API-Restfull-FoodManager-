@@ -7,9 +7,10 @@ const Productbymarket = require('../models/productbymarket');
 const Product = require('../models/product');
 const Market = require('../models/market');
 const checkAuth = require('../middleware/check-auth');
+
     
 
-router.get('/',(req, res, next)=>{
+router.get('/',checkAuth,(req, res, next)=>{
     Productbymarket.find()
     .select('product market quantity price')
     .populate('product market', 'name brand description location')
@@ -39,7 +40,7 @@ router.get('/',(req, res, next)=>{
     });
 });
 
-router.post('/',(req, res, next)=>{
+router.post('/',checkAuth,(req, res, next)=>{
     Product.findById(req.body.productId) && Market.findById(req.body.marketId)
         .then(new_product => {
             if(!new_product){
@@ -80,8 +81,9 @@ router.post('/',(req, res, next)=>{
         });
     });
 });
+
 //productbymarket por ID
-router.get('/:productbymarketId',(req, res, next)=>{
+router.get('/:productbymarketId',checkAuth,(req, res, next)=>{
     Productbymarket.findById(req.params.productbymarketId)
     .select('product market quantity price')
     .populate('product market', 'name brand description location ')
