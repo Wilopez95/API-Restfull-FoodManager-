@@ -56,6 +56,7 @@ router.post('/',checkAuth,(req, res, next)=>{
                 address: req.body.address,
                 price: req.body.price,
                 remark: req.body.remark,
+                status: "Pendiente"
             });
             return order.save();
         })
