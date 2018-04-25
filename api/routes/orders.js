@@ -40,7 +40,7 @@ router.get('/',(req, res, next)=>{
     });
 });
 
-router.post('/',(req, res, next)=>{
+router.post('/',checkAuth,(req, res, next)=>{
         User.findById(req.body.userId) && Market.findById(req.body.marketId)
         .then(new_order =>{
             if(!new_order){
