@@ -9,7 +9,6 @@ BODY:
 	"address": "Ahi por ahi donde vive juan el calvo",
 	"price": "1500",
 	"remark":"Mae mandemelo en la noche! ",
-	"status": "finishet",
 	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyNDAxMzEyMSwiZXhwIjoxNTI0MDE2NzIxfQ.X6OxSCmsJd5YQHnUhe50iVMuFTQ6GUpjge1s6j8IX10"
 }
 -------------------------------------------

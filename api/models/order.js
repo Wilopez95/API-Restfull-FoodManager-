@@ -8,7 +8,7 @@ const orderSchema = mongoose.Schema({
      address: {type: String,required: true},
      price: {type: Number,default: 0,required: true},
      date: { type: Date, default: Date.now },
-     remark: {type: String},
+     remark: {type: String,default: "Pendiente"},
      status: {type: String,required: true}
      
 });

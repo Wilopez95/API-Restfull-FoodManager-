@@ -40,7 +40,7 @@ router.get('/',(req, res, next)=>{
     });
 });
 
-router.post('/',checkAuth,(req, res, next)=>{
+router.post('/',(req, res, next)=>{
         User.findById(req.body.userId) && Market.findById(req.body.marketId)
         .then(new_order =>{
             if(!new_order){
@@ -56,7 +56,6 @@ router.post('/',checkAuth,(req, res, next)=>{
                 address: req.body.address,
                 price: req.body.price,
                 remark: req.body.remark,
-                status: req.body.status
             });
             return order.save();
         })
