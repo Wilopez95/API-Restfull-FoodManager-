@@ -77,7 +77,7 @@ router.post('/',(req, res, next)=>{
         })
         .catch(err =>{
             res.status(500).json({
-                message: 'Product or market does not exist',
+                message: 'User or market does not exist',
                 error: err
             });
         });
