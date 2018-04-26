@@ -86,7 +86,7 @@ router.post('/',checkAuth,(req, res, next)=>{
 });
 
 //ordenes de un markey
-router.get('/market/:marketId',checkAuth,(req, res, next)=>{
+router.get('/market/:marketId',(req, res, next)=>{
     const marketId = req.params.marketId;
     Order.find({market:marketId}).sort({date: "desc"})
     .select('user market products address price date remark status')
@@ -111,7 +111,7 @@ router.get('/market/:marketId',checkAuth,(req, res, next)=>{
 
 
 //ordenes de un user
-router.get('/user/:userId',checkAuth,(req, res, next)=>{
+router.get('/user/:userId',(req, res, next)=>{
     const userId = req.params.userId;
     Order.find({user:userId}).sort({date: "desc"})
     .select('user market products address price date remark status')

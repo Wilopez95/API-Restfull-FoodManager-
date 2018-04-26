@@ -83,7 +83,7 @@ router.post('/',checkAuth,(req, res, next)=>{
 });
 
 //productbymarket por ID
-router.get('/:productbymarketId',checkAuth,(req, res, next)=>{
+router.get('/:productbymarketId',(req, res, next)=>{
     Productbymarket.findById(req.params.productbymarketId)
     .select('product market quantity price')
     .populate('product market', 'name brand description location ')

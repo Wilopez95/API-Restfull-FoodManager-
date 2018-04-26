@@ -72,9 +72,6 @@ BODY:
 -------------------------------------------
 Obtener los productos de un mercado especifico (markeId) se remplaza por el numero de markeId
 GET-> https://food-manager.herokuapp.com/productsbymarkets/market/(markeId)
-{
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
-}
 -------------------------------------------
 Obtener los mercados asociados a un cliente (UserId) se remplaza por el numero de UserID
 GET ->https://food-manager.herokuapp.com/markets/(UserId)
@@ -90,17 +87,9 @@ DELETE ->  http://localhost:3000/productsbymarkets/(productbymarketId)
 -------------------------------------------
 Obtener las ordenes de cada mercado 
 GET-> http://localhost:3000/orders/market/5ad670d01e10e9097892c44b
-BODY:
-{
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
-}
 -------------------------------------------
 Obtener las ordenes de cada usuario 
 GET-> http://localhost:3000/orders/user/5ad41c6ea8b2bd3b88049313
-BODY:
-{
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
-}
 -------------------------------------------
 Cambiar el estado de una Orden (PropName es el nombre del parametro que se quiere cambiar , Value es el nuevo valor)
 PATCH-> http://localhost:3000/orders/(OrderID)
