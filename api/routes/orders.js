@@ -115,7 +115,8 @@ router.get('/user/:userId',(req, res, next)=>{
     const userId = req.params.userId;
     Order.find({user:userId}).sort({date: "desc"})
     .select('user market products address price date remark status')
-    .populate('user','email name phone ')
+    //.populate('user','email name phone ')
+    .populate('market','name location phone')
     .exec()
     .then(order=>{
         if(order.length<0){
