@@ -80,19 +80,19 @@ Obtener un producto por su codigo unico se sustituye por el codigo de un product
 GET -> https://food-manager.herokuapp.com/produts/code/(productcode)
 -------------------------------------------
 Eliminar los productos asociado a un mercado 
-DELETE ->  http://localhost:3000/productsbymarkets/(productbymarketId)
+DELETE ->  https://food-manager.herokuapp.com/productsbymarkets/(productbymarketId)
 {
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZ3VpZW5tYXMzQHBlcnNvbmEuY29tIiwidXNlcklkIjoiNWFkNDFjOTgzOWVkZjcwNmE0YmVmYmE1IiwibmFtZSI6ImJlbml0b21hczMiLCJwaG9uZSI6MTIzNDU2ODksInR5cGUiOjEsImlhdCI6MTUyMzkwMjgxNiwiZXhwIjoxNTIzOTA2NDE2fQ.9k3LbQMDYcGPmm3dgfEtoVmC7HLnDco4NilM-Oxh14w"
 }
 -------------------------------------------
 Obtener las ordenes de cada mercado 
-GET-> http://localhost:3000/orders/market/5ad670d01e10e9097892c44b
+GET-> https://food-manager.herokuapp.com/orders/market/5ad670d01e10e9097892c44b
 -------------------------------------------
 Obtener las ordenes de cada usuario 
-GET-> http://localhost:3000/orders/user/5ad41c6ea8b2bd3b88049313
+GET-> https://food-manager.herokuapp.com/orders/user/5ad41c6ea8b2bd3b88049313
 -------------------------------------------
 Cambiar el estado de una Orden (PropName es el nombre del parametro que se quiere cambiar , Value es el nuevo valor)
-PATCH-> http://localhost:3000/orders/(OrderID)
+PATCH-> https://food-manager.herokuapp.com/orders/(OrderID)
 BODY:
 [{
           
@@ -103,7 +103,7 @@ BODY:
 -------------------------------------------
 Cambiar la informacion de un usuario (PropName es el nombre del parametro que se quiere cambiar , Value es el nuevo valor)
 "Aplicables a nombre y telefono nada mas"
-PATCH-> http://localhost:3000/users/name/(5ae7e2501416da00203c5cdf) or http://localhost:3000/users/phone/(5ae7e2501416da00203c5cdf) 
+PATCH-> https://food-manager.herokuapp.com/users/name/(5ae7e2501416da00203c5cdf) or https://food-manager.herokuapp.com/users/phone/(5ae7e2501416da00203c5cdf) 
 BODY:
 {
             "value": "Armando Lopez"  or "value": "89898989"
