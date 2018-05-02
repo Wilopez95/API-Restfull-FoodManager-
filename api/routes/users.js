@@ -105,16 +105,36 @@ router.post('/login',(req, res, next)=> {
         })
     });
 });
-
-
-
-router.patch('/:userId',(req, res, next)=> {
+//Update phone
+router.patch('/phone/:userId',(req, res, next)=> {
     const id = req.params.userId;
     const updateOps = {};
-    for(const ops of req.body){
+    /*for(const ops of req.body){
         updateOps[ops.propName]= ops.value;
-    }
-    User.update({ _id: id },{ $set: updateOps})
+    }*/
+    User.update({ _id: id },{ phone: req.body.value})
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json({
+            message: 'Sucesfull'
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+           error: err 
+        });    
+    }); 
+});
+//Update name
+router.patch('/name/:userId',(req, res, next)=> {
+    const id = req.params.userId;
+    const updateOps = {};
+    /*for(const ops of req.body){
+        updateOps[ops.propName]= ops.value;
+    }*/
+    User.update({ _id: id },{ name: req.body.value})
     .exec()
     .then(result => {
         console.log(result);

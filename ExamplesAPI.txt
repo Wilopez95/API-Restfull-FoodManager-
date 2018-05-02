@@ -103,14 +103,12 @@ BODY:
 -------------------------------------------
 Cambiar la informacion de un usuario (PropName es el nombre del parametro que se quiere cambiar , Value es el nuevo valor)
 "Aplicables a nombre y telefono nada mas"
-PATCH-> http://localhost:3000/users/(OrderID)
+PATCH-> http://localhost:3000/users/name/(5ae7e2501416da00203c5cdf) or http://localhost:3000/users/phone/(5ae7e2501416da00203c5cdf) 
 BODY:
-[{
-          
-			"propName": "name",
-            "value": "Armando Lopez"
+{
+            "value": "Armando Lopez"  or "value": "89898989"
   
-}]
+}
 
 -------------------------------------------
 
