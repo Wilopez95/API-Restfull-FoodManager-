@@ -147,10 +147,10 @@ module.exports = router;
 router.patch('/:orderId',(req, res, next)=> {
     const id = req.params.orderId;
     const updateOps = {};
-    for(const ops of req.body){
+    /*for(const ops of req.body){
         updateOps[ops.propName]= ops.value;
-    }
-    Order.update({ _id: id },{ $set: updateOps})
+    }*/
+    Order.update({ _id: id },{ status: req.body.value})
     .exec()
     .then(result => {
         console.log(result);

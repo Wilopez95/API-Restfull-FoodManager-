@@ -91,15 +91,14 @@ GET-> https://food-manager.herokuapp.com/orders/market/5ad670d01e10e9097892c44b
 Obtener las ordenes de cada usuario 
 GET-> https://food-manager.herokuapp.com/orders/user/5ad41c6ea8b2bd3b88049313
 -------------------------------------------
-Cambiar el estado de una Orden (PropName es el nombre del parametro que se quiere cambiar , Value es el nuevo valor)
+Cambiar el estado de una Orden ( Value es el nuevo valor del status.orden)
 PATCH-> https://food-manager.herokuapp.com/orders/(OrderID)
 BODY:
-[{
+{
           
-			"propName": "status",
             "value": "Completado"
   
-}]
+}
 -------------------------------------------
 Cambiar la informacion de un usuario (PropName es el nombre del parametro que se quiere cambiar , Value es el nuevo valor)
 "Aplicables a nombre y telefono nada mas"
